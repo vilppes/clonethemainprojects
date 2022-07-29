@@ -34,12 +34,13 @@ class GitActionsForMains:
         for project in self.project_gits:
             self.git_clone_a_project(self.make_a_project_name(project))
     def git_clone_a_project(self,pgit2):
-        command = "git clone "
-        if pgit2[2] == "1":
+        command = "cd .. & git clone "
+        if int(pgit2[2]) == 1:
             command += "--recursive "
         command += self.base_git + pgit2[0] + " "
         if pgit2[1] != "main" and pgit2[1] != "master":
-            command += "--branch "+pgit2[1]
+            command += "--branch "+pgit2[1]+" "
+        command += pgit2[0]+"-"+pgit2[1]
         self.run_command(self.format_command(command))
     def load_project_gits_from_file(self,file: str) -> None:
         for line in self.open_file(file):
@@ -50,7 +51,3 @@ class GitActionsForMains:
             return lines
     def load_project_gits_from_a_prespecified_file(self):
         self.load_project_gits_from_file("projectlist.txt")
-gafm = GitActionsForMains([],"https://github.com/vilppes/")
-gafm.load_project_gits_from_a_prespecified_file()
-gafm.set_project_names(gafm.get_project_gits())
-print(gafm.get_project_names())
