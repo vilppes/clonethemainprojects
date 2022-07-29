@@ -42,9 +42,11 @@ class GitActionsForMains:
             command += "--branch "+pgit2[1]
         self.run_command(self.format_command(command))
     def load_project_gits_from_file(self,file: str) -> None:
+        for line in self.open_file(file):
+            self.project_gits.append(line)
+    def open_file(self,file) -> list[str]:
         with open(file) as f:
             lines = f.readlines()
-            for line in lines:
-                self.project_gits.append(line)
+            return lines
     def load_project_gits_from_a_prespecified_file(self):
         self.load_project_gits_from_file("projectlist.txt")
