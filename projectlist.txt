@@ -1,0 +1,7 @@
+https://github.com/vilppes/accessibility-resources,main,0
+https://github.com/vilppes/notes-on-learning-bluetooth,main,0
+https://github.com/vilppes/emergency-messaging,dev-sm,0
+https://github.com/vilppes/vilppes,main,0
+https://github.com/vilppes/cboard,master,1
+https://github.com/vilppes/cboard,dev,1
+https://github.com/vilppes/cboard,dev-rejected,1

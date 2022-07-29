@@ -41,3 +41,10 @@ class GitActionsForMains:
         if pgit2[1] != "main" and pgit2[1] != "master":
             command += "--branch "+pgit2[1]
         self.run_command(self.format_command(command))
+    def load_project_gits_from_file(self,file: str) -> None:
+        with open(file) as f:
+            lines = f.readlines()
+            for line in lines:
+                self.project_gits.append(line)
+    def load_project_gits_from_a_prespecified_file(self):
+        self.load_project_gits_from_file("projectlist.txt")
