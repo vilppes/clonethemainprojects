@@ -7,7 +7,7 @@ class GitActionsForMains:
         self.base_git = base_git
     def set_project_names(self,project_gits: list) -> list:
         for pgit in project_gits:
-            self.project_names.append(self.make_a_project_name[0]+"-"+self.make_a_project_name[1])
+            self.project_names.append(self.make_a_project_name(pgit)[0]+"-"+self.make_a_project_name(pgit)[1])
     def make_a_project_name(self,project_git: str) -> str:
         pgit1 = project_git.split(self.base_git)[1]
         pgit2 = pgit1.split(",")
@@ -50,3 +50,7 @@ class GitActionsForMains:
             return lines
     def load_project_gits_from_a_prespecified_file(self):
         self.load_project_gits_from_file("projectlist.txt")
+gafm = GitActionsForMains([],"https://github.com/vilppes/")
+gafm.load_project_gits_from_a_prespecified_file()
+gafm.set_project_names(gafm.get_project_gits())
+print(gafm.get_project_names())
