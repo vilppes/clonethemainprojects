@@ -23,13 +23,13 @@ class GitActionsForMains:
         return self.get_project_names()
     def git_pull_all_projects(self) -> None:
         for project_name in self.project_names:
-            command = "cd .. & cd "+project_name+" & "+"git pull"
-            command2 = self.format_command(command)
-            self.run_command(command2)
+            self.format_and_run_command("cd .. & cd "+project_name+" & "+"git pull")
     def format_command(self,command):
         return 'cmd /c "{}"'.format(command)
     def run_command(self,command):
         os.system(command)
+    def format_and_run_command(self,command):
+        self.run_command(self.format_command(command))
     def git_clone_all_projects(self) -> None:
         for project in self.project_gits:
             self.git_clone_a_project(self.make_a_project_name(project))
@@ -41,7 +41,7 @@ class GitActionsForMains:
         if pgit2[1] != "main" and pgit2[1] != "master":
             command += "--branch "+pgit2[1]+" "
         command += pgit2[0]+"-"+pgit2[1]
-        self.run_command(self.format_command(command))
+        self.format_and_run_command(command)
     def load_project_gits_from_file(self,file: str) -> None:
         for line in self.open_file(file):
             self.project_gits.append(line)
