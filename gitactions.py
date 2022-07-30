@@ -46,8 +46,13 @@ class GitActionsForMains:
         for line in self.open_file(file):
             self.project_gits.append(line)
     def open_file(self,file) -> list[str]:
-        with open(file) as f:
+        with open(file,"r") as f:
             lines = f.readlines()
             return lines
+    def write_file(self,file,lines) -> None:
+        with open(file,"a") as f:
+            f.writelines(lines)
+    def add_line_to_file(self,file,line) -> None:
+        self.write_file(file,"\n"+line)
     def load_project_gits_from_a_prespecified_file(self):
         self.load_project_gits_from_file("projectlist.txt")
