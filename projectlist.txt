@@ -5,3 +5,4 @@ https://github.com/vilppes/vilppes,main,0
 https://github.com/vilppes/cboard,master,1
 https://github.com/vilppes/cboard,dev,1
 https://github.com/vilppes/cboard,dev-rejected,1
+https://github.com/vilppes/comprex,dev,0
